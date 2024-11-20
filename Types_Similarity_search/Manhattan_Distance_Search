@@ -1,0 +1,142 @@
+Manhattan Distance, also known as Taxicab or City Block Distance, is named after the street grid structure of Manhattan, New York. In this system, movement is restricted to horizontal and vertical paths, much like traveling from point A to point B along city streets rather than as the crow flies (diagonally). This idea translates into vector spaces by measuring distances through sums of absolute differences, emphasizing horizontal and vertical displacements.
+
+Distance Calculation Concept
+
+The fundamental idea behind Manhattan Distance is to measure the distance between two N-dimensional points by summing up the absolute differences of their respective coordinates. For example, in two dimensions, the formula to find the distance between two points 
+𝑝
+p and 
+𝑞
+q is:
+
+Manhattan Distance
+=
+∣
+𝑝
+1
+−
+𝑞
+1
+∣
++
+∣
+𝑝
+2
+−
+𝑞
+2
+∣
+Manhattan Distance=∣p 
+1
+​
+ −q 
+1
+​
+ ∣+∣p 
+2
+​
+ −q 
+2
+​
+ ∣
+
+Multidimensional Formula
+
+The formula generalizes to an N-dimensional space, where for two vectors 
+𝑝
+=
+(
+𝑝
+1
+,
+𝑝
+2
+,
+.
+.
+.
+,
+𝑝
+𝑁
+)
+p=(p 
+1
+​
+ ,p 
+2
+​
+ ,...,p 
+N
+​
+ ) and 
+𝑞
+=
+(
+𝑞
+1
+,
+𝑞
+2
+,
+.
+.
+.
+,
+𝑞
+𝑁
+)
+q=(q 
+1
+​
+ ,q 
+2
+​
+ ,...,q 
+N
+​
+ ), the distance is computed as:
+
+Distance
+=
+∑
+𝑖
+=
+1
+𝑁
+∣
+𝑝
+𝑖
+−
+𝑞
+𝑖
+∣
+Distance=∑ 
+i=1
+N
+​
+ ∣p 
+i
+​
+ −q 
+i
+​
+ ∣
+
+This formula captures the sum of the absolute coordinate differences, representing the grid-like movement.
+
+Visual Representation
+
+Visually, this distance metric measures "stepped" paths between two points, reflecting real-world movements in constrained or grid-based systems (like city blocks).
+
+ 
+def manhattan_distance(vector1, vector2):
+    if len(vector1) != len(vector2):
+        raise ValueError("Vectors must have the same number of dimensions.")
+
+    distance = sum(abs(v1 - v2) for v1, v2 in zip(vector1, vector2))
+    return distance
+
+# Example usage:
+vector1 = [1, 2, 3]
+vector2 = [4, 0, 3]
+
+print("Manhattan Distance:", manhattan_distance(vector1, vector2))

@@ -1,0 +1,12 @@
+Hamming Distance Search Explained
+Definition: Hamming Distance is a metric used to measure the difference between two strings of equal length. Specifically, it counts the number of positions at which the corresponding symbols (characters or bits) are different. In essence, it represents the minimum number of substitutions needed to change one string into the other.
+
+Formula: Hamming Distance = Number of positions at which the corresponding symbols are different.
+
+Example:
+i in the two strings are different, and 0 if they are the same.
+
+How Hamming Distance Search Works:
+
+Hamming Distance is primarily used for comparing binary strings or sequences of bits.
+In a search context, it helps to find items that differ from a query string by a specific number of characters or bits. For example, it can be used to identify closely related data sequences. 
