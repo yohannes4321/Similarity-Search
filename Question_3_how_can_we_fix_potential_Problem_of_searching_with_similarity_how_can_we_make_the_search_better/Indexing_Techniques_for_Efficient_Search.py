@@ -1,3 +1,8 @@
+import faiss
+import numpy as np
+import AnnoyIndex
+ 
+import scann
 """
 1. Approximate Nearest Neighbor (ANN) Search
 ANN Search is a technique used for quickly finding the closest data points in high-dimensional spaces, without the computational 
@@ -12,10 +17,8 @@ ANN sacrifices some accuracy for performance, making it ideal when you need fast
  
 
  """
-import faiss
-import numpy as np
 
-# Example: Creating a Faiss index
+ 
 d = 128  # dimensionality of the vectors
 xb = np.random.random((1000, d)).astype('float32')  # 1000 random vectors
 index = faiss.IndexFlatL2(d)  # L2 distance (Euclidean)
@@ -45,8 +48,7 @@ result = t.get_nns_by_item(0, 5)  # Get 5 nearest neighbors for item 0
 print(result)
 
 #ScaNN (Scalable Nearest Neighbors)
- 
-import scann
+
 # Example setup for ScaNN
 dataset = np.random.random((1000, 128))  # Random dataset
 scann_index = scann.scann_ops_pybind.builder(dataset, 10, "dot_product").build()
