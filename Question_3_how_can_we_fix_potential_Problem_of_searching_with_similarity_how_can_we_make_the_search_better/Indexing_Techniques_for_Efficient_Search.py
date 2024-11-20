@@ -101,12 +101,4 @@ Example of Hybrid Search:
 Imagine you have both the inverted index and an ANN index for product descriptions.
  A user searches for “Apple iPhone”. The system first uses the inverted index to find all documents containing "Apple" and "iPhone". 
  Then, it applies a vector-based similarity search on the subset of documents to rank them by relevance  
-
-Benefits of Inverted Indexing:
-Efficiency: Very fast lookups for keyword-based queries.
-Scalability: Handles very large document collections.
-Simplicity: Easy to implement and understand.
-Challenges with Inverted Indexing:
-Complexity for Advanced Queries: Inverted indices are effective for exact matches but may struggle with more complex queries like fuzzy matches or semantic searches.
-Storage: Inverted indices can grow large, especially for large datasets with a rich vocabulary.
 """
