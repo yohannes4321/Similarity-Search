@@ -1,46 +1,57 @@
+"""Cosine Similarity Search
+
+measure of similarity  between two non zero vectors defined in inner product space 
+dot product of vectors divided by the product of the vectors with absolute value 
+    
+  
+For example
+1 two proportional vectors ( two identical vectors )have cosine similiarity of 1
+2 two opposite vectors have cosine similarity of 0
+3 two orthogonal vectors have cosine similarity of 0
+
+cosine similarity = A.B/ |A|*|B|
+which is summition of Ai.Bi / squareroot(sum`Ai^2) * sqaureroot(sum`Bi^2))   
+the range is from -1 to 1
+
+
+Advantages of Cosine similarity Search 
+
+
+1 Ignore the magnitude  and focus on the direction of the vectors 
+which means it does not matter how large and small the vectors is 
+what matter most is the direction 
+
+2 Efficient for High Dimensional Data
+cosine similiraty is very efficient and works well even if the vectors are sparce(
+    for example many zeros  in ttext representations
+) 
+
+3 result is easy to interpret:
+the output ranges from -1 to 1 
+1 means vectors point to the same direction 
+0 vectors are orthogonal (no similarity)
+-1 vetors point in opposite direction (completely dissimilar)
+
+
+DisAdvantages of Cosine similarity Search
+
+1 Does not measure distance
+it is not distance metric two vectors have high cosine similarity even if large Euclidean distance 
+in space 
+
+2 Limited to Linear Relationship it doesnot capture complex pattern non linear similarity .
+
+"""
 import numpy as np
-"""
-Cosine similarity is a widely used metric for measuring the similarity between two vectors,
- particularly in text analysis, such as in natural language processing (NLP) tasks like text mining, sentiment analysis, and 
- document clustering. Here's an explanation of how to compute cosine similarity, along with Python code to demonstrate it.
+def cosine_similar(x,y):
+    dot=np.dot(x,y)
+    norm1=np.linalg.norm(x)
+    norm2=np.linalg.norm(y)
+    return dot/(norm1*norm2)
 
-cosine similarity(|X,Y|)=x.y /(|x||y|)"""
- 
+x = np.array([1, 2, 3])   
+y= np.array([4, 5, 6])  
 
-# Function to compute cosine similarity
-def cosine_similarity(vec1, vec2):
-    # Compute the dot product of vec1 and vec2
-    dot_product = np.dot(vec1, vec2)
-    
-    # Compute the magnitude (norm) of vec1 and vec2
-    norm_vec1 = np.linalg.norm(vec1)
-    norm_vec2 = np.linalg.norm(vec2)
-    
-    # Compute the cosine similarity
-    cosine_sim = dot_product / (norm_vec1 * norm_vec2)
-    return cosine_sim
-
-# Example vectors (these can be word embeddings or any feature vectors)
-vec1 = np.array([1, 2, 3])
-vec2 = np.array([4, 5, 6])
-
-# Compute and print cosine similarity
-similarity = cosine_similarity(vec1, vec2)
-"""
-Dot Product: np.dot(vec1, vec2) computes the dot product between the two vectors.
-Magnitude (Norm): np.linalg.norm(vec) computes the Euclidean norm (magnitude) of a vector.
-Cosine Similarity Calculation: The formula is applied by dividing the dot product by the product of the magnitudes of the two vectors.
-Example Vectors: We provide two example vectors, vec1 and vec2. In real-world applications, these could be text representations such as word embeddings (e.g., from Word2Vec, GloVe, or BERT).
-
-Result: The function returns the cosine similarity value, which ranges from -1 (completely opposite vectors), 0 (orthogonal vectors), to 1 (identical vectors).
-
-Output
-For the vectors vec1 = [1, 2, 3] and vec2 = [4, 5, 6], the output will be:
-
-Similarity: The higher the cosine similarity (closer to 1), the more similar the vectors are. If the cosine similarity is 0,
-the vectors are orthogonal, indicating no similarity.
-Negative Similarity: A negative cosine similarity means the vectors are opposite, i.e., their angle is greater than 90°.
-"""
-
-
+similarity = cosine_similar(x,y)   
+print(f"cosine similarity: {similarity:.4f}")
 
