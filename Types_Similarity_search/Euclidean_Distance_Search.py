@@ -1,81 +1,38 @@
+"""Euclidean Distance Search 
+
+Euclidean distance metric calcultes stright line shortes distance 
+between two points in n-dimensional space
+
+the distance between two vectors and x,y,z and square and add them finally sqrt
+formula for Euclidean distance
+
+d(p,q) = sqrt((x1 - y1)^2 + (x2 - y2)^2)
+
+Advantages
+
+1 its StrightForward and easy to interpret
+2 Effective for low dimensional data
+3 standard for many applications like k Nearst Neighbors
+    
+
+Disadvantages
+1 sensitive to scale 
+so we have to normilize or standardize the data
+2 senstive to outliers
+large outliers can skew the results significantly 
+3 ignores Directions
+it only considers magnitude not directionality 
+    """
+import faiss
 import numpy as np
+database=np.array([[1,2,3],[4,5,6],[7,8,9]])
+index=faiss.IndexFlatL2(3)
+query_vector=np.array([[3,3,3]],dtype=np.float32)
+distance,indices=index.search(query_vector,3)
+print(f"Nearest neighbor index: {indices[0][0]}")
+print(f"Euclidean distance: {distance[0][0]}")
+print(f" 2ND Nearest neighbor index: {indices[0][1]}")
+print(f" 2ND Euclidean distance: {distance[0][1]}")
 
-"""Euclidean distance
-is the straight-line distance between two points 
- in a multi-dimensional space. The Euclidean Distance Search is a method used to find the 
- nearest points (or vectors) to a given point based on their Euclidean distances.
-d(p,q)=√(x(p)-x(q))2+(y(p)-y(q))2+(z(p)-z(q))2
-The Euclidean distance is computed between the query vector and each data point.
-The distances indicate how "close" or "similar" each data point is to the query. A smaller distance implies a higher similarity.
-Returning Nearest Neighbors:
-
-Once distances are calculated, data points are ranked based on their distances from the query.
-The nearest points (i.e., with the smallest distances) are returned as the search results.
-
- 
-Steps:
-Vector Representation: Data points are represented as vectors in an n-dimensional space.
-Query Point: A query point is also represented as a vector.
-Distance Calculation: Euclidean distance is calculated between the query point and each data point.
-Nearest Neighbors: Data points are ranked based on their Euclidean distances from the query point, and the nearest neighbors are returned.
-Code Implementation:
-"""
- 
-def euclidean_distance(p, q):
-    return np.sqrt(np.sum((np.array(p) - np.array(q)) ** 2))
-
-# Sample data points (vectors) representing user profiles
-data_points = [
-    {"id": 1, "profile": [25, 50000, 200]},   # Age, Income, Spending Score
-    {"id": 2, "profile": [30, 55000, 250]},
-    {"id": 3, "profile": [22, 45000, 180]},
-    {"id": 4, "profile": [35, 60000, 300]},
-    {"id": 5, "profile": [28, 52000, 220]},
-]
-
-# Query point (e.g., a user's query profile)
-query_point = [28, 52000, 220]
-
-# Calculate the Euclidean distance between the query point and each data point
-distances = []
-for data in data_points:
-    distance = euclidean_distance(query_point, data["profile"])
-    distances.append({"id": data["id"], "distance": distance})
-
-# Sort the distances to get the nearest neighbors
-sorted_distances = sorted(distances, key=lambda x: x["distance"])
-
-# Display the nearest neighbors
-print("Nearest Neighbors (sorted by Euclidean Distance):")
-for neighbor in sorted_distances:
-    print(f"ID: {neighbor['id']}, Distance: {neighbor['distance']:.4f}")
-"""
-The function euclidean_distance(p, q) computes the straight-line distance between two vectors p and q.
-This is done by calculating the squared differences between corresponding elements in the vectors, summing them up, and then taking the square root of the result.
-Sample Data Points:
-
-data_points represents a set of user profiles, each with three features: age, income, and spending score.
-Each profile is a vector, and these vectors are used to calculate the Euclidean distance to the query vector.
-Query Point:
-
-query_point represents the vector of the query (e.g., the features of a user or item you're searching for).
-Calculating Distances:
-
-For each data point in the dataset, the Euclidean distance to the query point is calculated using the euclidean_distance function.
-The results are stored in the distances list, which also includes the ID of each data point for identification.
-Sorting:
-
-The distances are sorted in ascending order using the sorted function. This ensures that the nearest neighbors (smallest distance) come first.
-Displaying Results:
-Nearest Neighbors (sorted by Euclidean Distance):
-ID: 5, Distance: 0.0000
-ID: 2, Distance: 22.6274
-ID: 1, Distance: 35.3553
-ID: 3, Distance: 49.4977
-ID: 4, Distance: 70.7107
-Key Points:
-Euclidean Distance is used to measure how far apart two vectors are in a multi-dimensional space. In this case,
- the space represents user features like age, income, and spending score.
-The smaller the distance, the closer the data point is to the query point.
-This method is very effective in nearest neighbor searches, clustering, and many machine learning tasks
- where you need to find data points that are similar to a given query."""
+print(f"3RD Nearest neighbor index: {indices[0][2]}")
+print(f"3RD Euclidean distance: {distance[0][2]}")
