@@ -1,7 +1,0 @@
-Instead of searching for exact nearest neighbors, I can use approximate methods 
-Approximate Nearest Neighbor (ANN) Algorithms
-
-Instead of searching for exact nearest neighbors, you can use approximate methods that sacrifice a little bit of accuracy for a huge gain in speed. Popular ANN algorithms include:
-
-LSH (Locality Sensitive Hashing): This hashing technique hashes data points so that similar items map to the same hash buckets with high probability. The idea is to create multiple hash tables, each using a different hashing function, which increases the chance that similar data points will collide. Instead of searching across all points, LSH allows for narrowing down the candidates quickly.
-HNSW (Hierarchical Navigable Small World Graphs): This method builds a multi-layered graph where each node represents a data point, and edges connect it to "neighbors" based on proximity. The search starts from the highest layer and moves downward, greatly reducing the search time for similar points. Compared to brute-force searches, it is orders of magnitude faster.

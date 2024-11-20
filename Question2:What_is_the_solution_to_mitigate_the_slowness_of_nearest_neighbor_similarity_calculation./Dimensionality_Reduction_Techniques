@@ -1,6 +1,0 @@
-One reason why nearest neighbor search becomes slow is the "curse of dimensionality." In high dimensions, distances between data points become less meaningful and harder to compute. By reducing dimensions:
-
-1 ,Principal Component Analysis (PCA): This linear method transforms the data into a lower-dimensional space while preserving as much variability as possible. It reduces noise and makes the search faster.
-2 t-SNE, UMAP:
-
- These are more complex methods that work well for visualizing and clustering data in fewer dimensions. While they aren't perfect for indexing, they help reduce dimensionality before applying nearest neighbor algorithms.

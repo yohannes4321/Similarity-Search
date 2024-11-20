@@ -1,0 +1,9 @@
+faiss-cpu
+numpy
+scikit-learn
+umap-learn
+annoy
+scann
+matplotlib
+scipy
+pandas

@@ -1,31 +1,46 @@
+import numpy as np
 """
-Cosine Similarity
- cosine of the angle between two non-zero vectors in an inner product space.
- The similarity score ranges from -1 (completely opposite) to 1 (exactly the same), 
- with 0 indicating orthogonality (no similarity)
+Cosine similarity is a widely used metric for measuring the similarity between two vectors,
+ particularly in text analysis, such as in natural language processing (NLP) tasks like text mining, sentiment analysis, and 
+ document clustering. Here's an explanation of how to compute cosine similarity, along with Python code to demonstrate it.
 
-cosine similarity(|X,Y|)=x.y /(|x||y|)
-Cosine similarity is a mathematical metric used to measure the similarity between two vectors in a multi-dimensional space,
-particularly in high-dimensional spaces, by calculating the cosine of the angle between them.
+cosine similarity(|X,Y|)=x.y /(|x||y|)"""
+ 
 
-The Significance of Cosine Similarity in Data Analysis and NLP
+# Function to compute cosine similarity
+def cosine_similarity(vec1, vec2):
+    # Compute the dot product of vec1 and vec2
+    dot_product = np.dot(vec1, vec2)
+    
+    # Compute the magnitude (norm) of vec1 and vec2
+    norm_vec1 = np.linalg.norm(vec1)
+    norm_vec2 = np.linalg.norm(vec2)
+    
+    # Compute the cosine similarity
+    cosine_sim = dot_product / (norm_vec1 * norm_vec2)
+    return cosine_sim
 
+# Example vectors (these can be word embeddings or any feature vectors)
+vec1 = np.array([1, 2, 3])
+vec2 = np.array([4, 5, 6])
 
-used for tasks such as text mining, sentiment analysis, and document clustering. 
+# Compute and print cosine similarity
+similarity = cosine_similarity(vec1, vec2)
+"""
+Dot Product: np.dot(vec1, vec2) computes the dot product between the two vectors.
+Magnitude (Norm): np.linalg.norm(vec) computes the Euclidean norm (magnitude) of a vector.
+Cosine Similarity Calculation: The formula is applied by dividing the dot product by the product of the magnitudes of the two vectors.
+Example Vectors: We provide two example vectors, vec1 and vec2. In real-world applications, these could be text representations such as word embeddings (e.g., from Word2Vec, GloVe, or BERT).
 
-The metric helps in comparing two pieces of text to understand their semantic similarity, which is crucial for making accurate recommendations or categorizations.
+Result: The function returns the cosine similarity value, which ranges from -1 (completely opposite vectors), 0 (orthogonal vectors), to 1 (identical vectors).
 
-Key Advantages
+Output
+For the vectors vec1 = [1, 2, 3] and vec2 = [4, 5, 6], the output will be:
 
-Scale-invariance: Cosine similarity focuses on the directionality of vectors, not their magnitudes, making it effective across different scales.
-Dimensionality Reduction Compatibility: It works well with techniques like PCA and t-SNE due to measuring angles rather than distances.
-Simplicity and Efficiency: The formula is simple, involving the dot product and magnitudes of vectors, which makes it suitable for large datasets and real-time applications.
-Angle-Based Measurement: Unlike distance-based measures, it relies on vector angles, offering an intuitive sense of similarity.
-
+Similarity: The higher the cosine similarity (closer to 1), the more similar the vectors are. If the cosine similarity is 0,
+the vectors are orthogonal, indicating no similarity.
+Negative Similarity: A negative cosine similarity means the vectors are opposite, i.e., their angle is greater than 90°.
 """
 
-Challenges include:
 
-High-Dimensional Data Handling: Its effectiveness can decline in high-dimensional spaces.
-Sensitivity to Document Length: Although normalized, variations in document length may affect accuracy.
-Result Interpretation: High scores may not always reflect high relevance; context matters.
+
