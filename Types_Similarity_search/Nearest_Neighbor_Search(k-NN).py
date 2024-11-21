@@ -1,4 +1,4 @@
-Nearest Neighbor search 
+"""Nearest Neighbor search 
 proximity search is the optimization problem of finding 
 the point in a given set that is closest (most similar to given point )
 
@@ -30,4 +30,4 @@ steps
  simplicity : easy to implemint and understand
  versatility : works with any type of data where distance metric is defind 
  high accuracy : find exact and approximate neighbors based on defined metric 
- 
+"""

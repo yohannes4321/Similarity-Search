@@ -7,3 +7,4 @@ scann
 matplotlib
 scipy
 pandas
+tensorflow
